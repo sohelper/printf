@@ -24,9 +24,7 @@ int _printf(const char *format, ...)
 			count++;
 		}
 		if (*t == '\0')
-		{
 			break;
-		}
 		t++;
 		if (*t == 'c')
 			print_char(args, &count);
@@ -45,6 +43,5 @@ int _printf(const char *format, ...)
 		t++;
 	}
 	va_end(args);
-
 	return (count);
 }
