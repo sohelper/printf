@@ -10,9 +10,11 @@ int _printf(const char *format, ...)
 	const char *t;
 	va_list args;
 
-	if (format == NULL)
+	va_start(arguments, format);
+	if (!format || (format[0] == '%' && !format[1]))
 		return (-1);
-	va_start(args, format);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
+		return (-1);
 	t = format;
 
 	while (*t != '\0')
