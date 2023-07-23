@@ -5,15 +5,20 @@
  * @count: the count
  * Return: ha
  */
-void print_int_helper(int n, int *count)
+void print_int_helper(int n, int *count, int negative)
 {
 	if (n < 10)
 	{
+		if (negative)
+		{
+			_putchar('-');
+			(*count)++;
+		}
 		_putchar(n + '0');
 		(*count)++;
 		return;
 	}
-	print_int_helper(n / 10, count);
+	print_int_helper(n / 10, count, negative);
 	_putchar((n % 10) + '0');
 	(*count)++;
 }
@@ -25,11 +30,11 @@ void print_int_helper(int n, int *count)
 void print_int(va_list args, int *count)
 {
 	int num = va_arg(args, int);
+	int negative = 0;
 
 	if (num < 0)
 	{
-		_putchar('-');
-		(*count)++;
+		negative = 1;
 		num = -num;
 	}
 
@@ -40,6 +45,6 @@ void print_int(va_list args, int *count)
 	}
 	else
 	{
-		print_int_helper(num, count);
+		print_int_helper(num, count, negative);
 	}
 }
