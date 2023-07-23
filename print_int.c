@@ -3,6 +3,7 @@
  * print_int_helper - instead of intoa
  * @n: number
  * @count: the count
+ * @negative: test if negative
  * Return: ha
  */
 void print_int_helper(int n, int *count, int negative)
